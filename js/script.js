@@ -71,7 +71,11 @@ function focoText(){
 		}else if(tareas == null || tareas.length == 0){
 			console.log("elimina evento en foCoText");
 		btn.removeEventListener('click', agregar);
+		}//al presionar enter crece el textArea
+		else if (tareas==13) {
+			tareas.innerHTML = '\n';
 		}
+	
 
 	//contiene el largo del textArea
 	var long = tareas.length;
