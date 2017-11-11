@@ -1,7 +1,5 @@
 
-
 function agregar(){
-	
 	// tomo texto de textarea
 	var tareas = document.getElementById('tarea').value;
 	//se limpia textarea
@@ -10,21 +8,15 @@ function agregar(){
 	var nuevasTareas = document.createElement('div');
 	//contenedor donde irán las tareas
 	var cont = document.getElementById('contenedor');
+	//obtengo el boton
+	var btn = document.querySelector('button');
 	
-//valor para boton
-var btn = document.getElementById('boton');
-btn.disabled = true;
-console.log('boton deshabilitado');
-
-//validacion que textarea no este vacio
+	//Quito el evento si el  textarea esta vacio
 	if(tareas == null || tareas.length == 0){
-		alert('¡Error ! Debe ingresar tarea');
-		return false;
-}else{
-	texto.addEventListener('onkeypress', function(){
-		btn.disabled = !btn.disabled;
- 	});
-}
+		btn.removeEventListener('click', agregar);
+	console.log('entra a quitar el evento en agregar');
+	return false;
+	}
 
 	//checkbox
 	var chck = document.createElement('input');
@@ -53,52 +45,40 @@ console.log('boton deshabilitado');
 	//tachado
 	chck.addEventListener('click', function(){
 		elementoContenedor.classList.toggle('tachado'); //agrego clase tachado a span contenedor de tareas, se activa al hacer click
-	});
+	})
 
 	//remover tarea
 	basura.addEventListener('click', function(){
 		cont.removeChild(nuevasTareas); //remueve tareas agregadas al div contenedor, se activa al hacer click
-	});
+	})	
 
 	//corazon rojo
 	cora.addEventListener('click', function(){
 		cora.classList.toggle('red'); //agrega clase red al elemento span del corazon
-	});
+	})
 }
 
-// function textArea(){
+function focoText(){
 
-// var texto = document.getElementById('tarea').value;
-// var btn = document.getElementById('boton');
-// var clickBtn = document.getElementsByClassName('click')[0];
+	var tareas = document.getElementById('tarea').value;
 
-// //disabled boton
-// 	btn.disabled = true;
-// 	console.log('boton desabilitado');
+	var btn = document.querySelector('button');
+
+	//Si el largo te textarea es mayor a 1 se llama a la funcion agregar y si esta vacio, quito el evento click
+	if (tareas.length == 1){
+		btn.addEventListener('click', agregar);
+		console.log("agrega evento en foCoText");
+		}else if(tareas == null || tareas.length == 0){
+			console.log("elimina evento en foCoText");
+		btn.removeEventListener('click', agregar);
+		}
+
+	//contiene el largo del textArea
+	var long = tareas.length;
+	var counter = document.getElementById('count');
 	
-// if(texto == null || texto.length == 0){
-// 		alert('¡Error ! Debe ingresar tarea');
-// 		return false;
-// }else if(texto.length > 0){
-// 	console.log('boton habilitado');
-// 	texto.addEventListener('onkeypress', function(){
-// 		btn.disabled = !btn.disabled;
-// 	});
-// }
-// }
-
-
-
-
-function contar(){
-var max = "140";
-var cadena = document.getElementById("texto").value;
-var longitud = cadena.length;
-
-if (longitud <= max) {
-	// statement
-	document.getElementById("contador")
-} else {
-	// statement
+	counter.innerHTML = 140 - long;
+		
+	
 }
-}
+
