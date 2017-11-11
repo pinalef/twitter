@@ -79,6 +79,18 @@ function focoText(){
 	
 	counter.innerHTML = 140 - long;
 		
-	
+	//Evalua si pasa los 140 caracteres
+	if(tareas.length > 140){
+		counter.removeEventListener('click', agregar);
+	}//evalua si pasa los 130 caracteres
+	else if(tareas.length > 130){
+		counter.style.color = 'purple';
+	} //evalua si pasa los 120 caracteres
+	else if(tareas.length > 120){
+		counter.style.color = 'green';
+}// si son entre 0 y 120 caracteres el color sera negro
+else if(tareas.length > 0 || tareas.length <120){
+	counter.style.color = 'black';
 }
 
+}
