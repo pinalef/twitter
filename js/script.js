@@ -59,9 +59,9 @@ function agregar(){
 }
 
 function focoText(){
-
+//obtengo el textArea
 	var tareas = document.getElementById('tarea').value;
-
+//obtengo el boton agregar
 	var btn = document.querySelector('button');
 
 	//Si el largo te textarea es mayor a 1 se llama a la funcion agregar y si esta vacio, quito el evento click
