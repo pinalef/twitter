@@ -33,6 +33,11 @@ function agregar(){
 	var elementoContenedor = document.createElement('span');
 	//contiene textarea
 	elementoContenedor.appendChild(textoNuevaTarea);
+	//nodo hora 
+	var hora = document.createTextNode(moment().format('LT'));
+	var espacio = document.createElement('br');
+	elementoContenedor.appendChild(espacio);
+	elementoContenedor.appendChild(hora);
 
 	//paso checkbox a div
 	nuevasTareas.appendChild(chck);
